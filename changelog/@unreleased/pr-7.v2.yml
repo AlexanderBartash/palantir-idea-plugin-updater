@@ -1,0 +1,5 @@
+type: fix
+fix:
+  description: Remove IntelliJ IDEA plugin from description
+  links:
+  - https://github.com/palantir/palantir-idea-plugin-updater/pull/7

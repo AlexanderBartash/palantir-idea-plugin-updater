@@ -14,7 +14,7 @@
     <h2> Palantir Addon Updater </h2>
 
     <p>
-    Intellij IDEA plugin to automatically Palantir IDEA plugins.
+    Automatically updates Palantir plugins
 
     Runs in the background and attempts upgrades every hour. If upgrade fails opens a notification to the user.
     </p>
