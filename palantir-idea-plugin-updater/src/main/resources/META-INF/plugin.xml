@@ -1,22 +1,24 @@
 <!--
   ~ (c) Copyright 2025 Palantir Technologies Inc. All rights reserved.
-  -->
-
+ -->
+<!-- https://plugins.jetbrains.com/docs/intellij/dynamic-plugins.html -->
 <idea-plugin url="https://github.com/palantir/palantir-idea-plugin-updater" require-restart="false">
     <id>palantir-addon-updater</id>
     <name>Palantir Addon Updater</name>
-    <vendor url="https://github.com/palantir/palantir-idea-plugin-updater">
+
+    <vendor email="jetbrains-plugins@palantir.com" url="https://github.com/palantir/palantir-idea-plugin-updater">
         Palantir
     </vendor>
 
     <description>
         <![CDATA[
-    <h2> Palantir Addon Updater </h2>
+    <h2>Palantir Addon Updater</h2>
 
     <p>
-    Automatically updates Palantir plugins
-
-    Runs in the background and attempts upgrades every hour. If upgrade fails opens a notification to the user.
+    Runs in the background and attempts to upgrade
+    <a href="https://plugins.jetbrains.com/vendor/05482c17-76bf-4895-ab20-d5237ceb53a7">Palantir IntelliJ plugins</a>
+    every hour.
+    After a successful plugin update, a popup is shown to suggest an IDE restart.
     </p>
     ]]>
     </description>
@@ -25,7 +27,13 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <postStartupActivity implementation="com.palantir.gradle.ideapluginupdater.PluginUpdateProjectActivity"/>
-        <notificationGroup id="Update Palantir plugins"
-                           displayType="BALLOON"/>
+
+        <applicationService serviceImplementation="com.palantir.gradle.ideapluginupdater.PalantirI18nBundle"/>
+        <projectService serviceImplementation="com.palantir.gradle.ideapluginupdater.PluginUpdateService"/>
+
+        <notificationGroup id="notifications.group.palantir.plugins.updates"
+                           bundle="i18n.PalantirBundle"
+                           displayType="BALLOON"
+                           key="notifications.group.palantir.plugins.updates"/>
     </extensions>
 </idea-plugin>
