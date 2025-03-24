@@ -52,3 +52,13 @@ javaVersions {
 jdks {
     daemonTarget = 17
 }
+
+tasks {
+
+    wrapper {
+        gradleVersion = project.providers.gradleProperty("gradleVersion").get()
+        distributionType = Wrapper.DistributionType.valueOf(project.providers.gradleProperty("gradleWrapperType").get())
+        distributionSha256Sum = project.providers.gradleProperty("distributionSha256Sum").get()
+    }
+
+}
