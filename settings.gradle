@@ -8,6 +8,8 @@ buildscript {
         classpath 'com.palantir.gradle.jdks:gradle-jdks-settings:0.63.0'
     }
 }
+
+// https://github.com/palantir/gradle-jdks
 apply plugin: 'com.palantir.jdks.settings'
 rootProject.name = 'palantir-idea-plugin-updater-root'
 

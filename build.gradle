@@ -5,44 +5,68 @@ buildscript {
     }
 
     dependencies {
+        // https://github.com/palantir/gradle-jdks/tags
         classpath 'com.palantir.gradle.jdks:gradle-jdks:0.63.0'
+        // https://github.com/palantir/gradle-jdks-latest/tags
         classpath 'com.palantir.gradle.jdkslatest:gradle-jdks-latest:0.17.0'
+        // https://github.com/palantir/gradle-plugin-testing/tags
         classpath 'com.palantir.gradle.plugintesting:gradle-plugin-testing:0.6.0'
+        // https://github.com/palantir/jakarta-package-alignment/tags
         classpath 'com.palantir.jakartapackagealignment:jakarta-package-alignment:0.6.0'
+        // https://github.com/palantir/gradle-external-publish-plugin/tags
         classpath 'com.palantir.gradle.externalpublish:gradle-external-publish-plugin:1.19.0'
+        // https://github.com/palantir/gradle-failure-reports/tags
         classpath 'com.palantir.gradle.failure-reports:gradle-failure-reports:1.13.0'
+        // https://github.com/palantir/palantir-java-format/tags
         classpath 'com.palantir.javaformat:gradle-palantir-java-format:2.61.0'
+        // https://github.com/palantir/suppressible-error-prone/tags
         classpath 'com.palantir.suppressible-error-prone:gradle-suppressible-error-prone:2.7.0'
+        // https://github.com/palantir/gradle-consistent-versions/tags
         classpath 'com.palantir.gradle.consistentversions:gradle-consistent-versions:2.32.0'
+        // https://github.com/palantir/gradle-baseline/tags
         classpath 'com.palantir.baseline:gradle-baseline-java:6.22.0'
+        // https://github.com/palantir/gradle-git-version/tags
         classpath 'com.palantir.gradle.gitversion:gradle-git-version:3.1.0'
     }
 }
 
+// https://github.com/palantir/gradle-external-publish-plugin
 apply plugin: 'com.palantir.external-publish'
+// https://docs.gradle.org/current/userguide/java_gradle_plugin.html
 apply plugin: 'java-gradle-plugin'
+// https://docs.gradle.org/current/userguide/groovy_plugin.html
 apply plugin: 'groovy'
+// https://github.com/palantir/gradle-baseline
 apply plugin: 'com.palantir.baseline'
+// https://github.com/palantir/gradle-consistent-versions
 apply plugin: 'com.palantir.consistent-versions'
+// https://github.com/palantir/gradle-git-version
 apply plugin: 'com.palantir.git-version'
+// https://github.com/palantir/gradle-plugin-testing
 apply plugin: 'com.palantir.gradle-plugin-testing'
+// https://github.com/palantir/gradle-jdks
 apply plugin: 'com.palantir.jdks'
+// https://github.com/palantir/gradle-failure-reports
 apply plugin: 'com.palantir.failure-reports'
+// https://github.com/palantir/gradle-baseline
 apply plugin: 'com.palantir.baseline-java-versions'
+// https://github.com/palantir/gradle-jdks-latest
 apply plugin: 'com.palantir.jdks.latest'
 
-version System.env.CIRCLE_TAG ?: gitVersion()
+version = System.env.CIRCLE_TAG ?: gitVersion()
 
 allprojects {
+    // https://github.com/palantir/jakarta-package-alignment
     apply plugin: 'com.palantir.jakarta-package-alignment'
+    // https://github.com/palantir/palantir-java-format
     apply plugin: 'com.palantir.java-format'
 
     repositories {
         mavenCentral() { metadataSources { mavenPom(); ignoreGradleMetadataRedirection() } }
     }
 
-    group 'com.palantir.palantir-idea-plugin-updater'
-    version rootProject.version
+    group = 'com.palantir.palantir-idea-plugin-updater'
+    version = rootProject.version
 }
 
 javaVersions {
