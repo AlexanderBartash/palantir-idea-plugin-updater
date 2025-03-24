@@ -1,5 +1,8 @@
+// https://github.com/palantir/gradle-plugin-testing
 apply plugin: 'com.palantir.gradle-plugin-testing'
+// https://docs.gradle.org/current/userguide/java_plugin.html
 apply plugin: 'java'
+// https://github.com/palantir/gradle-external-publish-plugin
 apply plugin: 'com.palantir.external-publish-intellij'
 
 intellij {
